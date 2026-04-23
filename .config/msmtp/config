@@ -1,0 +1,16 @@
+defaults
+auth             on
+tls              on
+tls_starttls     off 
+tls_trust_file   /etc/ssl/certs/ca-certificates.crt
+logfile          ~/.msmtp.log
+
+account          disroot 
+from             amirhabirov@disroot.org
+user             amirhabirov@disroot.org
+host             disroot.org
+port             465
+protocol         smtp
+passwordeval     "pass show amirhabirov@disroot.org/smtp"
+
+account default: disroot 

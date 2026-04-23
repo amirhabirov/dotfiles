@@ -1,0 +1,80 @@
+syntax off
+
+set shm+=asWIFcC enc=utf8 tgc bg=light ls=2 stl=\ %F%m\ %l:%c nosc nosmd noru 
+set nu rnu fcs=eob:\  ut=300 mmp=20000 lz clipboard=unnamedplus mouse=  
+set sb spr ic sc is hls ts=2 sw=2 et sta sr ai si ci pi hid noswf nobk udf 
+
+let s:udir=$MYVIMDIR . 'undo'
+if !isdirectory(s:udir)
+  call mkdir(s:udir, 'p')
+endif
+let &udir=s:udir
+
+hi! Normal   guibg=#ffffea guifg=#333333
+hi! link     LineNr        Normal
+hi! link     VertSplit     Normal
+hi! link     NonText       Normal
+hi! Visual   guibg=#d3d3d3 guifg=#333333
+hi! link     CursorLine    Visual
+hi! link     StatusLine    Visual
+hi! link     StatusLineNC  Visual
+hi! link     Pmenu         Visual
+hi! link     Search        Visual
+hi! link     CurSearch     Visual
+hi! link     IncSearch     Visual
+hi! link     MatchParen    Visual
+hi! link     ColorColumn   Visual
+hi! WildMenu guibg=#333333 guifg=#ffffea
+hi! link     PmenuSel      WildMenu
+
+let g:mapleader=' '
+let g:netrw_banner=0
+let g:loaded_matchparen=1
+let g:project_root=getcwd()
+
+function! ToggleQuickfix()
+  if exists('*getwininfo')
+    let l:qf_wins = filter(getwininfo(), 'v:val.quickfix')
+    if !empty(l:qf_wins)
+      ccl 
+      return
+    endif
+  endif
+  if len(getqflist()) > 0
+   cope 
+  else
+    echom 'Quickfix list is empty: can''t open'
+  endif
+endfunction
+
+command Make exe 'lcd' g:project_root | make
+
+nn j gjzz
+nn k gkzz
+nn n nzz
+nn N nzz
+
+nn <leader>w :w!<CR>
+nn <leader>q :wq!<CR>
+nn <leader>e :Lex<CR>
+nn <leader>n :nohls<CR>:ec<CR>
+nn <leader>v :vs<CR>
+nn <leader>m :Make<CR>
+nn <leader>c :call ToggleQuickfix<CR>
+
+nn <leader>h :wincmd h<CR>
+nn <leader>j :wincmd j<CR>
+nn <leader>k :wincmd k<CR>
+nn <leader>l :wincmd l<CR>
+
+nn <C-h> :vertical resize -10<CR>
+nn <C-j> :horizontal resize +5<CR>
+nn <C-k> :horizontal resize -5<CR>
+nn <C-l> :vertical resize +10<CR>
+
+au BufEnter * lcd %:p:h
+au FileType netrw setl bh=wipe
+au FileType Makefile setl noet
+au FileType python setl ts=4 sw=4 
+
+filetype on

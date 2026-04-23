@@ -1,0 +1,16 @@
+[database]
+path=/home/amirhabirov/.mail
+
+[user]
+name=Amir Habirov
+primary_email=amirhabirov@disroot.org
+
+[new]
+tags=unread;inbox;
+ignore=
+
+[search]
+exclude_tags=deleted;spam;
+
+[maildir]
+synchronize_flags=true

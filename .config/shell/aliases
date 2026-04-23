@@ -1,0 +1,12 @@
+alias ls="ls --group-directories-first -p"
+alias ll="ls --group-directories-first -lph"
+alias la="ls --group-directories-first -Ap"
+
+alias t=tmux
+alias a=aerc
+alias v=vim
+alias vi=vim
+alias nvim=vim
+
+alias ns="vim $HOME/Documents/notes"
+alias smb="$XDG_CONFIG_HOME/shell/scripts/mail.sh --sync &"

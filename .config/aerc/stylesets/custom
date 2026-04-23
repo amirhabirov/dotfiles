@@ -1,0 +1,22 @@
+*.fg                    = "#333333"
+*.bg                    = "#ffffea"
+statusline_*.bg         = "#333333"
+statusline_*.fg         = "#ffffea"
+statusline_default.dim  = false 
+msglist*.selected.bg    = "#d3d3d3"
+msglist_marked.bg       = "#d3d3d3" 
+dirlist*.selected.bg    = "#d3d3d3"
+part*.bg                = "#ffffea"
+part*.selected.bg       = "#d3d3d3"
+completion*.selected.bg = "#d3d3d3"
+tab.bg                  = "#333333"
+tab.fg                  = "#ffffea"
+tab.selected.bg         = "#d3d3d3"
+tab.selected.fg         = "#333333"
+border.bg               = "#333333"
+border.fg               = "#333333"
+
+[viewer]
+*.default     = true
+*.normal      = true
+*.fg          = "#333333"

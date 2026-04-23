@@ -1,0 +1,51 @@
+#!/bin/sh
+
+cfg_display() {
+  xrandr --output HDMI-0 --mode 1920x1080 --rate 165
+  redshift -PO 3500
+  xsetroot -solid "#ffffea"
+  xset s off
+  xset s noblank
+  xset -dpms
+}
+
+cfg_kb_layout() {
+  setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle"
+}
+
+cfg_all() {
+  cfg_display
+  cfg_kb_layout
+}
+
+exec_apps() {
+  dunst &
+  clipmenud &
+  goldendict &
+  test $(pgrep -cx tg-ws-proxy) -ge 1 || tg-ws-proxy &
+  telegram-desktop -startintray &
+  st &
+}
+
+exec_scripts() {
+  $XDG_CONFIG_HOME/src/slstatus/scripts/warmup.sh &
+  $XDG_CONFIG_HOME/shell/scripts/mail.sh &
+}
+
+exec_wm() {
+  slstatus &
+  exec dwm 
+}
+
+exec_all() {
+  exec_apps
+  exec_scripts
+  exec_wm
+}
+
+main() {
+  cfg_all
+  exec_all
+}
+
+main

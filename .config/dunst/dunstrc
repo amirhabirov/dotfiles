@@ -1,0 +1,27 @@
+[global]
+  width              = (0, 700) 
+  height             = (0, 400) 
+  offset             = (0, 25)
+  font               = Comic Code Ligatures 28
+  alignment          = center 
+  vertical_alignment = center
+  show_age_threshold = -1
+  ignore_dbusclose   = true
+  stack_duplicates   = false 
+  frame_width        = 1
+  frame_color        = "#333333"
+
+[urgency_low]
+  background  = "#d3d3d3"
+  foreground  = "#333333"
+  timeout     = 0
+
+[urgency_normal]
+  background  = "#d3d3d3"
+  foreground  = "#333333"
+  timeout     = 0
+
+[urgency_critical]
+  background  = "#d3d3d3"
+  foreground  = "#333333"
+  timeout     = 0
