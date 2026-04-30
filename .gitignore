@@ -34,6 +34,12 @@
 !/.config/vim/vimrc
 !/.config/vim/colors/
 
+!/.config/emacs/
+/.config/emacs/*
+!/.config/emacs/early-init.el
+!/.config/emacs/init.el
+!/.config/emacs/themes/
+
 !/.config/gnupg/
 /.config/gnupg/*
 !/.config/gnupg/gpg-agent.conf

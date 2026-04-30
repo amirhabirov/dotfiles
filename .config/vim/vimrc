@@ -2,10 +2,10 @@ syntax off
 
 if !empty($DISPLAY)
   set termguicolors
-  colorscheme buistvokrasok
+  colorscheme buistvo-krasok
 endif
 
-set shortmess+=asWIFcC
+set shortmess=asWIFcC
 set statusline=\ %F%m\ %l:%c laststatus=2 noruler noshowmode 
 set number relativenumber fillchars=eob:\  
 set lazyredraw updatetime=300 maxmempattern=20000

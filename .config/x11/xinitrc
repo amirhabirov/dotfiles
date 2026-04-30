@@ -9,12 +9,11 @@ configure_keyboard_layout_switcher() {
 }
 
 start_applications() {
+  emacsclient -c -a "" &
   goldendict &
-  test $(pgrep -cx tg-ws-proxy) -ge 1 || (tg-ws-proxy &)
-  telegram-desktop -startintray &
   clipmenud &
   dunst &
-  st &
+  test $(pgrep -cx tg-ws-proxy) -gt 0 || tg-ws-proxy &
 }
 
 start_status_bar(){ 
