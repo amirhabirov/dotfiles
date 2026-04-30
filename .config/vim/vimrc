@@ -63,7 +63,7 @@ nnoremap <Leader>m :Make<CR>:echo<CR>
 nnoremap <Leader>c :call ToggleQuickfix()<CR>:echo<CR>
 
 nnoremap <C-h> :vertical resize -10<CR>:echo<CR>
-nnoremap <C-j> :horizontal resize+5<CR>:echo<CR>
+nnoremap <C-j> :horizontal resize +5<CR>:echo<CR>
 nnoremap <C-k> :horizontal resize -5<CR>:echo<CR>
 nnoremap <C-l> :vertical resize +10<CR>:echo<CR>
 
