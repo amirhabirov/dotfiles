@@ -1,0 +1,28 @@
+Create             Both 
+Expunge            Both
+Sync               All
+SyncState          *
+CopyArrivalDate    Yes
+
+IMAPAccount        amirhabirov@disroot.org
+Host               disroot.org
+Port               993
+User               amirhabirov@disroot.org
+PassCmd            "pass show amirhabirov@disroot.org/imap"
+TLSType            IMAPS
+AuthMechs          LOGIN
+SystemCertificates Yes
+Timeout            30 
+
+IMAPStore          amirhabirov@disroot.org-remote
+Account            amirhabirov@disroot.org
+
+MaildirStore       amirhabirov@disroot.org-local
+Path               ~/.mail/
+Inbox              ~/.mail/Inbox
+SubFolders         Verbatim
+
+Channel            amirhabirov@disroot.org
+Far                :amirhabirov@disroot.org-remote:
+Near               :amirhabirov@disroot.org-local:
+Patterns           *

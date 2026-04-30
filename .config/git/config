@@ -1,0 +1,24 @@
+[user]
+  name          = Amir Habirov  
+  email         = amirhabirov@disroot.org
+  signingkey    = 4C0BE5368882EAA8
+
+[commit]
+  gpgSign       = true
+
+[init]
+  defaultBranch = master 
+
+[color]
+  log           = no
+  diff          = no
+  grep          = no
+  status        = no 
+  branch        = no 
+  ui            = no
+
+[alias]
+  st            = status
+  co            = checkout
+  br            = branch
+  cm            = commit -m

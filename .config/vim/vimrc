@@ -1,0 +1,80 @@
+syntax off
+
+if !empty($DISPLAY)
+  set termguicolors
+  colorscheme buistvokrasok
+endif
+
+set shortmess+=asWIFcC
+set statusline=\ %F%m\ %l:%c laststatus=2 noruler noshowmode 
+set number relativenumber fillchars=eob:\  
+set lazyredraw updatetime=300 maxmempattern=20000
+set ignorecase smartcase incsearch hlsearch
+set splitbelow splitright
+set tabstop=2 shiftwidth=2
+set expandtab smarttab shiftround autoindent smartindent copyindent
+set nowrap nofoldenable
+set hidden noswapfile nobackup undofile
+
+let &undodir=$MYVIMDIR . 'undo'
+if !isdirectory(&undodir)
+  call mkdir(&undodir, 'p')
+endif
+
+if has('clipboard')
+  set clipboard+=unnamedplus
+endif
+
+let g:loaded_matchparen=1
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:project_root=getcwd()
+let g:mapleader=' '
+
+command Make exe 'lcd' g:project_root | make
+
+function! ToggleQuickfix()
+  if exists('*getwininfo')
+    let l:qf_wins = filter(getwininfo(), 'v:val.quickfix')
+    if !empty(l:qf_wins)
+      cclose
+      return
+    endif
+  endif
+  if len(getqflist()) > 0
+    copen
+  else
+    echom "Quickfix list is empty: cannot open."
+  endif
+endfunction
+
+nnoremap j jzz
+nnoremap k kzz
+nnoremap n nzz
+nnoremap N Nzz
+
+nnoremap <Leader>w :write!<CR>:echo<CR>
+nnoremap <Leader>q :x!<CR>
+nnoremap <Leader>v :vsplit<CR>:echo<CR>
+nnoremap <Leader>e :Lexplore<CR>:echo<CR>
+nnoremap <Leader>n :nohlsearch<CR>:echo<CR>
+
+nnoremap <Leader>m :Make<CR>:echo<CR>
+nnoremap <Leader>c :call ToggleQuickfix()<CR>:echo<CR>
+
+nnoremap <C-h> :vertical resize -10<CR>:echo<CR>
+nnoremap <C-j> :horizontal resize+5<CR>:echo<CR>
+nnoremap <C-k> :horizontal resize -5<CR>:echo<CR>
+nnoremap <C-l> :vertical resize +10<CR>:echo<CR>
+
+cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+cabbrev f find 
+
+autocmd BufEnter        *      lcd      %:p:h
+autocmd FileType        netrw  setlocal bufhidden=wipe
+autocmd FileType        make   setlocal noexpandtab 
+autocmd FileType        python setlocal tabstop=4 shiftwidth=4
+autocmd QuickFixCmdPost [^l]*  cwindow
+autocmd QuickFixCmdPost l*     lwindow
+
+filetype on

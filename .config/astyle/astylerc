@@ -1,0 +1,9 @@
+--style=attach
+--indent=tab=2
+--align-pointer=name
+--add-braces
+--break-return-type
+--suffix=none
+--errors-to-stdout
+--quiet
+--lineend=linux

@@ -1,0 +1,4 @@
+All   = *
+Inbox = tag:inbox and not tag:archived
+Today = tag:inbox date:today
+Week  = tag:inbox date:7d..today

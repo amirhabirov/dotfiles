@@ -1,0 +1,45 @@
+configure_display() {
+  xrandr --output HDMI-0 --mode 1920x1080 --rate 165 
+  xsetroot -solid "#ffffea"
+  redshift -PO 4000
+}
+
+configure_keyboard_layout_switcher() {
+  setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle"
+}
+
+start_applications() {
+  goldendict &
+  test $(pgrep -cx tg-ws-proxy) -ge 1 || (tg-ws-proxy &)
+  telegram-desktop -startintray &
+  clipmenud &
+  dunst &
+  st &
+}
+
+start_status_bar(){ 
+  $XDG_CONFIG_HOME/src/slstatus/scripts/mail.sh &
+  $XDG_CONFIG_HOME/src/slstatus/scripts/warmup.sh &
+  slstatus &
+}
+
+start_wm() {
+  exec dwm
+}
+
+configure_all() {
+  configure_display
+  configure_keyboard_layout_switcher
+}
+
+start_all() {
+  start_applications
+  start_status_bar
+  start_wm
+}
+
+main() {
+  configure_all && start_all
+}
+
+main
